@@ -34,7 +34,7 @@ export const fetchAndProcessData = async (url) => {
   }
 };
 
-const genrateAnswers = (questions) => {
+export const genrateAnswers = (questions) => {
   const answers = [];
 
   for (var i = 0; i < questions.length; i++) {
