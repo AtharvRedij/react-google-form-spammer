@@ -12,10 +12,13 @@ export const fetchAndProcessData = async () => {
   var url =
     "https://docs.google.com/forms/d/e/1FAIpQLSc_h1Sikcje0eXRNoPp0e41EKBBCXKRVzby0k5EWXaWjzPOhg/viewform?usp=sf_link";
 
-  console.log("HERE");
-
   try {
     const res = await fetch(proxyurl + url);
+
+    if (!res.ok) {
+      throw Error("Failed to fetch the form");
+    }
+
     const htmlStr = await res.text();
     const data = JSON.parse(
       htmlStr.split("var FB_PUBLIC_LOAD_DATA_ = ")[1].split(";")[0]
@@ -46,6 +49,7 @@ export const fetchAndProcessData = async () => {
     return [formID, formName, answers];
   } catch (err) {
     console.log(err);
+    return err.message;
   }
 };
 
