@@ -7,10 +7,8 @@
 // Drop Down Field = 3
 // File Upload Field = 13
 
-export const fetchAndProcessData = async () => {
-  const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  var url =
-    "https://docs.google.com/forms/d/e/1FAIpQLSc_h1Sikcje0eXRNoPp0e41EKBBCXKRVzby0k5EWXaWjzPOhg/viewform?usp=sf_link";
+export const fetchAndProcessData = async (url) => {
+  const proxyurl = "https://thingproxy.freeboard.io/fetch/";
 
   try {
     const res = await fetch(proxyurl + url);
@@ -29,28 +27,32 @@ export const fetchAndProcessData = async () => {
     const formName = data[3];
     const questions = data[1][1];
 
-    const answers = [];
-
-    for (var i = 0; i < questions.length; i++) {
-      if (questions[i][3] === 0 || questions[i][3] === 1) {
-        answers.push([questions[i][4][0][0], getRandomText()]);
-      } else if (
-        questions[i][3] === 2 ||
-        questions[i][3] === 3 ||
-        questions[i][3] === 4
-      ) {
-        const optionsArray = questions[i][4][0][1];
-        const option =
-          optionsArray[Math.floor(Math.random() * optionsArray.length)];
-        answers.push([questions[i][4][0][0], option[0]]);
-      }
-    }
-
-    return [formID, formName, answers];
+    return [formID, formName, questions];
   } catch (err) {
     console.log(err);
     return err.message;
   }
+};
+
+const genrateAnswers = (questions) => {
+  const answers = [];
+
+  for (var i = 0; i < questions.length; i++) {
+    if (questions[i][3] === 0 || questions[i][3] === 1) {
+      answers.push([questions[i][4][0][0], getRandomText()]);
+    } else if (
+      questions[i][3] === 2 ||
+      questions[i][3] === 3 ||
+      questions[i][3] === 4
+    ) {
+      const optionsArray = questions[i][4][0][1];
+      const option =
+        optionsArray[Math.floor(Math.random() * optionsArray.length)];
+      answers.push([questions[i][4][0][0], option[0]]);
+    }
+  }
+
+  return answers;
 };
 
 const getRandomText = (length = 10) => {

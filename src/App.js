@@ -3,30 +3,33 @@ import URLBox from "./components/URLBox";
 import { fetchAndProcessData, submitResponse } from "./utils";
 import Container from "react-bootstrap/Container";
 import ErrorBox from "./components/ErrorBox";
+import FormInfoBox from "./components/FormInfoBox";
 
 const App = () => {
-  const [errorMessage, setErrorMessage] = useState("");
   const [googleFormURL, setGoogleFormURL] = useState("");
-
   const [fetchingForm, setFetchingForm] = useState(false);
 
-  useEffect(() => {
-    // async function anyNameFunction() {
-    //   submitResponse(formID, answers);
-    // }
-    //anyNameFunction();
-  }, []);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [formID, setFormID] = useState("");
+  const [formName, setFormName] = useState("");
+  const [questions, setQuestions] = useState([]);
 
   const fetchForm = async () => {
     setFetchingForm(true);
+    setErrorMessage("");
+    setFormID("");
 
-    const result = await fetchAndProcessData();
+    const result = await fetchAndProcessData(googleFormURL);
     if (typeof result === "string") {
       console.log(result);
       setErrorMessage(result);
     } else {
-      const [formID, formName, answers] = result;
-      console.log(formID, formName, answers);
+      const [formID, formName, questions] = result;
+      console.log(formID, formName, questions);
+      setFormID(formID);
+      setFormName(formName);
+      setQuestions(questions);
     }
 
     setFetchingForm(false);
@@ -39,8 +42,9 @@ const App = () => {
         fetchingForm={fetchingForm}
         fetchForm={fetchForm}
       />
+
       {errorMessage && <ErrorBox message={errorMessage} />}
-      <h1>{googleFormURL}</h1>
+      {formID && <FormInfoBox formName={formName} questions={questions} />}
     </Container>
   );
 };
