@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-google-form-spammer/static/css/main.508fec2a.chunk.css",
+    "main.js": "/react-google-form-spammer/static/js/main.bdba9e16.chunk.js",
+    "main.js.map": "/react-google-form-spammer/static/js/main.bdba9e16.chunk.js.map",
+    "runtime-main.js": "/react-google-form-spammer/static/js/runtime-main.cb9ef41c.js",
+    "runtime-main.js.map": "/react-google-form-spammer/static/js/runtime-main.cb9ef41c.js.map",
+    "static/css/2.1a02f21c.chunk.css": "/react-google-form-spammer/static/css/2.1a02f21c.chunk.css",
+    "static/js/2.78cf822a.chunk.js": "/react-google-form-spammer/static/js/2.78cf822a.chunk.js",
+    "static/js/2.78cf822a.chunk.js.map": "/react-google-form-spammer/static/js/2.78cf822a.chunk.js.map",
+    "index.html": "/react-google-form-spammer/index.html",
+    "static/css/2.1a02f21c.chunk.css.map": "/react-google-form-spammer/static/css/2.1a02f21c.chunk.css.map",
+    "static/css/main.508fec2a.chunk.css.map": "/react-google-form-spammer/static/css/main.508fec2a.chunk.css.map",
+    "static/js/2.78cf822a.chunk.js.LICENSE.txt": "/react-google-form-spammer/static/js/2.78cf822a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cb9ef41c.js",
+    "static/css/2.1a02f21c.chunk.css",
+    "static/js/2.78cf822a.chunk.js",
+    "static/css/main.508fec2a.chunk.css",
+    "static/js/main.bdba9e16.chunk.js"
+  ]
+}
